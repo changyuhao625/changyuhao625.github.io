@@ -26,7 +26,7 @@ description: Share something interesting with you guys!
 
 ## => Language and Timezone
 ##############################
-lang: # the language of your site, default as "en"
+lang: # the language of your site, default as "en" "zh-TW"
 timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
 
 
@@ -116,11 +116,9 @@ sharing:
 ## => Comments
 ##############################
 comments:
-  provider: false # false (default), "disqus", "gitalk", "valine", "custom"
-
-  ## Disqus
+  provider: disqus
   disqus:
-    shortname: # the Disqus shortname for the site
+    shortname: changyuhao625-github-io
 
   ## Gitalk
   # please refer to https://github.com/gitalk/gitalk for more info.
@@ -206,11 +204,11 @@ defaults:
     values:
       layout: article
       sharing: true
-      license: true
+      license: false
       aside:
         toc: true
       show_edit_on_github: true
-      show_subscribe: true
+      show_subscribe: false
       pageview: true
 
 
