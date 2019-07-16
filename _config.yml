@@ -21,8 +21,7 @@ highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "t
 url     : # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
 title   : Harry Chang's Blog
-description: > # this means to ignore newlines until "Language & timezone"
-Share something interesting with you guys!
+description: Share something interesting with you guys!
 
 
 ## => Language and Timezone
@@ -57,7 +56,6 @@ author:
 ##############################
 repository: changyuhao625/changyuhao625.github.io
 repository_tree: master
-
 
 ## => Paths
 ##############################
@@ -169,11 +167,11 @@ search:
 ## => Analytics
 ##############################
 analytics:
-  provider: false # false (default), "google", "custom"
+  provider: google # false (default), "google", "custom"
 
   ## Google Analytics
   google:
-    tracking_id : # Google Analytics id for the site
+    tracking_id : UA-143927955-1 # Google Analytics id for the site
     anonymize_ip: false # Anonymize IP tracking for Analytics
 
 
