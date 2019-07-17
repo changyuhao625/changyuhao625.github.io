@@ -1,7 +1,7 @@
 ---
 layout: articles
-title: "RabbitMQ with .Net Core"
-tags: [".Net Core","RabbitMQ"]
+title: "RabbitMQ 動手做做看"
+tags: [".Net","RabbitMQ","EasyNetQ"]
 category: blog
 ---
 ## 前言
