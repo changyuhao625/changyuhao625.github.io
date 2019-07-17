@@ -59,4 +59,4 @@ networks:
 docker-compose up -d
 ~~~
 
-![Image](./././././blog/2019/07/rabbit-landing-page.png)
+![Image](https://raw.githubusercontent.com/changyuhao625/changyuhao625.github.io/master/images/blog/2019/07/rabbit-landing-page.png)
