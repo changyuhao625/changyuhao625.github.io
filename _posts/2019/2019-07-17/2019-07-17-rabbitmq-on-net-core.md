@@ -11,6 +11,7 @@ category: blog
 * 監控不易
 * 訊息無法持久化
 剛好RabbitMQ可以解決上述問題,與部門成員討論後決定將這個技術導入到現有專案來.
+本篇文章將透過EasyNetQ操作RabbitMQ.
 
 <!--more-->
 
