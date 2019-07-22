@@ -1,18 +1,24 @@
-                    <div class="article__desc">
+---
+layout: articles
+title: "[Asp.Net] Connection Pooling"
+tags: ["Asp.Net"]
+category: tech
+author: Harry Chang
+---
 
 最近系統時不時就出現「<span style="color:#FF0000;">*已超過連接逾時的設定。在取得集區連接之前超過逾時等待的時間，可能的原因為所有的共用連接已在使用中，並已達共用集區大小的最大值。*</span>」的錯誤訊息。
 
 在協助解決時，發現有關於Connection Pooling觀念不是了解得很透徹，於是想藉由這篇詳述一下Connection Pooling的運作！
 
-                    </div>
-
 一般來說，我們再透過SqlConnection 開啟一個連接閘道的時候，會類似以下的做法，
 
-    <code class="language-cs">using (SqlConnection conn = new SqlConnection("your connection string"))
+~~~cs
+    using (SqlConnection conn = new SqlConnection("your connection string"))
     {
        conn.Open();
        //...Do Something you want
-    }</code>
+    }
+~~~
 
 我們會使用「[Using好寫法](https://dotblogs.com.tw/harry/2016/07/14/113255)」來控管資源，我們以為出了Using之後，這個Connection 就會被正常回收，
 
@@ -40,6 +46,4 @@
 
 [https://msdn.microsoft.com/en-us/library/8xx3tyca(v=vs.100).aspx](https://msdn.microsoft.com/en-us/library/8xx3tyca(v=vs.100).aspx)
 
-[https://msdn.microsoft.com/zh-tw/library/system.data.sqlclient.sqlconnection.connectionstring(v=vs.110).aspx](https://msdn.microsoft.com/zh-tw/library/system.data.sqlclient.sqlconnection.connectionstring(v=vs.110).aspx)
-
-                
+[https://msdn.microsoft.com/zh-tw/library/system.data.sqlclient.sqlconnection.connectionstring(v=vs.110).aspx](https://msdn.microsoft.com/zh-tw/library/system.data.sqlclient.sqlconnection.connectionstring(v=vs.110).aspx)                
