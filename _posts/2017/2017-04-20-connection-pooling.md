@@ -10,6 +10,8 @@ author: Harry Chang
 
 在協助解決時，發現有關於Connection Pooling觀念不是了解得很透徹，於是想藉由這篇詳述一下Connection Pooling的運作！
 
+<!--more-->
+
 一般來說，我們再透過SqlConnection 開啟一個連接閘道的時候，會類似以下的做法，
 
 ~~~cs
@@ -46,4 +48,4 @@ author: Harry Chang
 
 [https://msdn.microsoft.com/en-us/library/8xx3tyca(v=vs.100).aspx](https://msdn.microsoft.com/en-us/library/8xx3tyca(v=vs.100).aspx)
 
-[https://msdn.microsoft.com/zh-tw/library/system.data.sqlclient.sqlconnection.connectionstring(v=vs.110).aspx](https://msdn.microsoft.com/zh-tw/library/system.data.sqlclient.sqlconnection.connectionstring(v=vs.110).aspx)                
+[https://msdn.microsoft.com/zh-tw/library/system.data.sqlclient.sqlconnection.connectionstring(v=vs.110).aspx](https://msdn.microsoft.com/zh-tw/library/system.data.sqlclient.sqlconnection.connectionstring(v=vs.110).aspx)git                 
