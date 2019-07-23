@@ -1,4 +1,10 @@
-                    <div class="article__desc">
+---
+layout: articles
+title: "[Asp.Net MVC] MVC 網站部署失敗"
+tags: ["Asp.Net MVC"]
+category: tech
+author: Harry Chang
+---
 
 今天部署網站到客戶端的時候，發現一直無法讓網站順利啟動，一直出現以下錯誤，
 
@@ -7,13 +13,14 @@
 
 ![](https://az787680.vo.msecnd.net/user/harry/84a01fd4-39cb-43cc-99c4-701ab9b9a7d2/1478078873_62819.png)
 
-                    </div>
 
 查了一些資料，都是在Config 加入「<span style="color:#0000FF;">runAllManagedModulesForAllRequests</span>」這個屬性，並設為 true，
 
-    <code class="language-xml"><system.webServer>
+~~~ xml
+<system.webServer>
       <modules runAllManagedModulesForAllRequests="true" />
-    </system.webServer></code>
+    </system.webServer>
+~~~
 
 加入後確實就正常了，但公司的測試機並不會有這個問題，也不需要加入這段設定，
 
@@ -25,6 +32,4 @@
 
 [在Windows 2008跑ASP.NET MVC 4](http://blog.darkthread.net/post-2015-05-30-aspnet-mvc-on-win2008.aspx)
 
-[ASP.NET MVC 4 在 .NET 4.0 與 .NET 4.5 的專案範本差異](http://blog.miniasp.com/post/2013/06/24/ASPNET-MVC-4-IIS-runAllManagedModulesForAllRequests-ExtensionlessUrlHandler.aspx)
-
-                
+[ASP.NET MVC 4 在 .NET 4.0 與 .NET 4.5 的專案範本差異](http://blog.miniasp.com/post/2013/06/24/ASPNET-MVC-4-IIS-runAllManagedModulesForAllRequests-ExtensionlessUrlHandler.aspx)               

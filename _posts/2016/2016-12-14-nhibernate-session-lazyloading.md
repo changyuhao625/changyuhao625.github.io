@@ -1,4 +1,12 @@
-                    <div class="article__desc">
+---
+layout: articles
+title: "NHibernate] Session 與 Lazy Loading"
+tags: ["NHibernate","Session"]
+category: tech
+author: Harry Chang
+---
+
+## 前言
 
 NHibernate 最有特色的一個機制就是「Session」，一般來說我們透過NHibernate 做CRUD 都是對Session進行操作，
 
@@ -6,9 +14,9 @@ NHibernate 最有特色的一個機制就是「Session」，一般來說我們�
 
 這篇文章是要探討Session 與 LazyLoading 共同運作下所發生什麼問題。
 
-                    </div>
+ <!--more-->
 
-前情提要:
+## 前情提要
 
 產品的 Service Layer 做完應做的商業邏輯後，會Call流程引擎，流程引擎也會做一些流程資料流的商業邏輯，
 
@@ -18,13 +26,15 @@ NHibernate 最有特色的一個機制就是「Session」，一般來說我們�
 
 當然，從Controller Call Service Layer 的那個瞬間，就已經進入 NHibernate 的 Session 控管之下了。
 
+## 問題探討
+
 問題：
 
 我們在Service Layer 透過 Session 儲存了一個實體「A」以及「B」，「A」與「B」是一對一 映對的關係，
 
 Service Layer 的程式碼如下：
-
-    <code class="language-cs">public class Service1
+~~~ cs
+    public class Service1
     {
       public void Active(){
         //實體「A」存檔
@@ -42,11 +52,12 @@ Service Layer 的程式碼如下：
         //Call Flow Service
         FlowService.Do("1234");     
       } 
-    }</code>
+    }
+~~~
 
 Flow Layer 的程式碼如下：
-
-    <code class="language-cs">public class FlowService
+~~~cs
+    public class FlowService
     {
       public void Do(string pk){
         //透過 Session Get實體「A」
@@ -58,7 +69,8 @@ Flow Layer 的程式碼如下：
         //透過 Session Get實體「a」
         var B1=Session.Get<B>(pk);
       } 
-    }</code>
+    }
+~~~
 
 有趣的事情發生了，「B」竟然是空的！但 「B1」有值，
 
@@ -67,8 +79,8 @@ Flow Layer 的程式碼如下：
 那我們再做一個實驗：
 
 Service Layer：
-
-    <code class="language-cs">public class Service1
+~~~ cs
+    public class Service1
     {
       public void Active(){
         //new 一個 實體 A出來
@@ -89,11 +101,12 @@ Service Layer：
         //Call Flow Service
         FlowService.Do("1234");     
       } 
-    }</code>
+    }
+~~~
 
 Flow Layer：
-
-    <code class="language-cs">public class FlowService
+~~~ cs
+public class FlowService
     {
       public void Do(string pk){
         //透過 Session Get實體「A」
@@ -105,13 +118,16 @@ Flow Layer：
         //透過 Session Get實體「B」
         var B1=Session.Get<B>(pk);
       } 
-    }</code>
+    }
+~~~
 
 Flow Layer 的程式碼都沒有動，唯一的差別是 Service Layer 的程式碼，
 
 我們先把「B」初始化指給「A」，再一次存進Session 底下，
 
 但這時候「B」與「B1」都有值了，為何這時候Lazy Loading 就成功了???
+
+## 問題解析
 
 再讓我們仔細挖掘下去，透過Profiler 發現其實Lazy Loading 的機制並沒有啟動，
 
@@ -123,6 +139,4 @@ Flow Layer 的程式碼都沒有動，唯一的差別是 Service Layer 的程式
 
 這樣的做法對系統效能上是良好的，因為Session 裡面本身就有我們的資料，何必再花一次連線回去要資料呢？
 
-看起來不是很好懂，可以直接動手試試看，就可以了解其中的端倪。
-
-                
+看起來不是很好懂，可以直接動手試試看，就可以了解其中的端倪。          

@@ -1,8 +1,10 @@
 ---
+layout: articles
 title: "[Asp .Net MVC] ActionLink 頁面跳轉異常的問題"
 tags: ["Asp .Net MVC"]
+category: tech
+author: Harry Chang
 ---
-
 
 專案上碰到HyperLink 自動被加上了Area Name ，一來一往越來越多Area Name ，導致 Routing 異常的錯誤。
 

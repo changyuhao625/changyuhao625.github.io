@@ -1,10 +1,16 @@
-                    <div class="article__desc">
+---
+layout: articles
+title: "[Asp.Net] 檔案上傳長度限制"
+tags: ["Asp.Net"]
+category: tech
+author: Harry Chang
+---
 
 今天在測試檔案上傳時，發現上傳特定幾個檔案時會失敗，
 
 Log 顯示「<span style="color:#FF0000;">*System.Web.HttpException (0x80004005): 超出最大的要求長度*</span>」，
 
-                    </div>
+<!--more-->
 
 查了一些相關文件，原來是Asp.Net 預設限制每一次的HttpRequest 為 4096 kb(4MB)，
 
@@ -13,16 +19,17 @@ Log 顯示「<span style="color:#FF0000;">*System.Web.HttpException (0x80004005)
 這個限制主要是避免有人惡意傳送大型檔案給伺服器 ，近一步造成伺服器異常，
 
 當然若要解除限制，只需要在Config 加入以下參數，
-
-    <code class="language-xml"><configuration>
+~~~xml 
+<configuration>
       <system.web>
         <httpRuntime targetFramework="4.5" maxRequestLength="2147483647" executionTimeout="1600" requestLengthDiskThreshold="2147483647" />
       </system.web>
-    </configuration></code>
+    </configuration>
+~~~
 
-*   maxRequestLength: 每一次 HttpRequest 的最大長度(預設4096 kb) 
-*   requestLengthDiskThreshold:  HttpRequest 資料串流的Buffer ，一般來說不會超過 maxRequestLength（預設80 kb）
-*   executionTimeout: 每一次 HttpRequest 執行超過多久就要Time Out(預設 110秒)
+  *   maxRequestLength: 每一次 HttpRequest 的最大長度(預設4096 kb) 
+  *   requestLengthDiskThreshold:  HttpRequest 資料串流的Buffer ，一般來說不會超過 maxRequestLength（預設80 kb）
+  *   executionTimeout: 每一次 HttpRequest 執行超過多久就要Time Out(預設 110秒)
 
 以上希望可以對大家有幫助。
 

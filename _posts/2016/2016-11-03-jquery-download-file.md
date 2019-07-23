@@ -1,16 +1,23 @@
-                    <div class="article__desc">
+---
+layout: articles
+title: "[jQuery] 為何不能透過 ajax 直接下載檔案?"
+tags: ["jQuery","ajax"]
+category: tech
+author: Harry Chang
+---
 
+## 前言
 在實作檔案下載時，我們通常會透過<span style="color:#0000FF;">location.href() 、window.open()、iframe </span>等方式來下載檔案，
 
 詳細實作方式可以參考黑暗執行緒的「[透過Javascript觸發檔案下載](http://blog.darkthread.net/post-2011-08-12-ajax-download-with-iframe.aspx)」，
 
 那為何不行透過 ajax 來下載檔案呢 ?
 
-                    </div>
+<!--more-->
 
 我們可以從以下兩個面向來探討「為何不能使用 ajax 來下載檔案」：
 
-**1. ajax**
+## ajax
 
 ajax 其中一項最重要的作用是「非同步處理」，即我們可以透過 ajax 發出 HttpRequest 向伺服器索取我們想要的資料，
 
@@ -22,7 +29,7 @@ ajax 其中一項最重要的作用是「非同步處理」，即我們可以透
 
 可以發現全部都是屬於「文字」型態的格式，也就是說ajax 本身就不是設計來下載檔案使用的。
 
-**2. JavaScript**
+## JavaScript
 
 假設我們真的可以取得檔案資料(binary) ，但也不可能直接透過JavaScript 將檔案存在我們本機端，
 
@@ -30,7 +37,7 @@ ajax 其中一項最重要的作用是「非同步處理」，即我們可以透
 
 換句話說，<span style="color:#0000FF;">瀏覽器會阻止JavaScript 直接「存取」本機端的資源，以避免遭受惡意攻擊</span>。
 
-* * *
+---
 
 以上是「為何不能使用 ajax 來下載檔案」的原因。常常我們在寫程式時都「知其然，而不知所以然」，
 
@@ -38,6 +45,4 @@ ajax 其中一項最重要的作用是「非同步處理」，即我們可以透
 
 參考：
 
-[http://stackoverflow.com/questions/14682556/why-threre-is-no-way-to-download-file-using-ajax-request](http://stackoverflow.com/questions/14682556/why-threre-is-no-way-to-download-file-using-ajax-request)
-
-                
+[http://stackoverflow.com/questions/14682556/why-threre-is-no-way-to-download-file-using-ajax-request](http://stackoverflow.com/questions/14682556/why-threre-is-no-way-to-download-file-using-ajax-request)               
