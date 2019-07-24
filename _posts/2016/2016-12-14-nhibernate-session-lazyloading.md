@@ -1,6 +1,6 @@
 ---
 layout: articles
-title: "NHibernate] Session 與 Lazy Loading"
+title: "[NHibernate] Session 與 Lazy Loading"
 tags: ["NHibernate","Session"]
 category: tech
 author: Harry Chang
