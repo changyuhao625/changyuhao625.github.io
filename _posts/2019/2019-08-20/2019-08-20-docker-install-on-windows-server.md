@@ -14,7 +14,7 @@ author: Harry Chang
 
 Docker 也會一起被關閉，決定把Docker 換成EE版本的，照著官方說明安裝一直無法順利安裝，
 
-紀錄一下如何解決
+紀錄一下如何將Docker EE安裝到Windows Server上.
 
 <!--more-->
 
