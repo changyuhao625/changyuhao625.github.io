@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "[Asp .Net MVC] ActionLink 頁面跳轉異常的問題"
 tags: ["Asp .Net MVC"]
 category: tech
