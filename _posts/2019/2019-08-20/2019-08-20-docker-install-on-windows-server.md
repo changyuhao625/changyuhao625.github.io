@@ -8,7 +8,7 @@ author: Harry Chang
 
 ## 前言
 
-最近發現開發環境的Docker非常不穩，常常需要重新啟動Docker服務才會正常，
+最近發現Windows Server上的Docker非常不穩，常常需要重新啟動Docker服務才會正常，
 
 仔細一查才發現，原來我們的Docker裝的是Desktop版本，所所以只要User Timeout被登出後，
 
