@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "團隊共創法-隨手小記"
 tags: ["團隊共創法","Facilitator"]
 category: softskill

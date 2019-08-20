@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "[Asp.Net] 檔案上傳長度限制"
 tags: ["Asp.Net"]
 category: tech

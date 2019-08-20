@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "[jQuery] $.isEmptyObject 小提醒 !"
 tags: ["jQuery"]
 category: tech

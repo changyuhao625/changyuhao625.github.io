@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "[C#] Null 條件運算子(Null Conditional Operators)"
 tags: ["C#"]
 category: tech

@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "ORID 焦點討論法"
 tags: ["ORID","Facilitator","焦點討論法"]
 category: softskill

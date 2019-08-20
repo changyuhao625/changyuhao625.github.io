@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "RabbitMQ 動手做做看"
 tags: [".Net","RabbitMQ","EasyNetQ"]
 category: tech

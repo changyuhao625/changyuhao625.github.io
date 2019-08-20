@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "[Asp.Net MVC] MVC 網站部署失敗"
 tags: ["Asp.Net MVC"]
 category: tech

@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "[Asp.Net MVC] Razor Engine"
 tags: ["Asp.Net MVC"]
 category: tech

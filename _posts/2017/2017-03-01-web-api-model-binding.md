@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "[Web API 2] 客製化ModelBinder"
 tags: ["Model Binding","ModelBinder"]
 category: tech

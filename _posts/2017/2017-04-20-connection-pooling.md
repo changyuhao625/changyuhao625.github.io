@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "[Asp.Net] Connection Pooling"
 tags: ["Asp.Net"]
 category: tech

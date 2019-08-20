@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "[NHibernate] Session 與 Lazy Loading"
 tags: ["NHibernate","Session"]
 category: tech

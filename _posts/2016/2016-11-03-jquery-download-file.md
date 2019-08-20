@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "[jQuery] 為何不能透過 ajax 直接下載檔案?"
 tags: ["jQuery","ajax"]
 category: tech

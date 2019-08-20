@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: post
 title: "[Asp.Net MVC] An item with the same key has already been added！"
 tags: ["Asp.Net MVC","Model Binding"]
 category: tech
