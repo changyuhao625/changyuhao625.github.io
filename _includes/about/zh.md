@@ -10,7 +10,7 @@ Hi! 我是Harry，
 
 # 認證
 
-<img src="/img/badge-7227.png"/>
+<img src="/img/badge-7227.png" width="100px"/>
 
 # Skills
 
