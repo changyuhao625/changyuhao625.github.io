@@ -1,4 +1,10 @@
-                    <div class="article__desc">
+---
+layout: post
+title: "[Asp .Net MVC] ViewMode vs DTO(Data Transfer Object)"
+tags: ["View Model","DTO"]
+category: tech
+author: Harry Chang
+---
 
 View Model 與 DTO 到底有何不同的時候，想用這篇文章解釋一下差異。
 
@@ -9,9 +15,10 @@ View Model 與 DTO 到底有何不同的時候，想用這篇文章解釋一下�
 
 最重要的就是具有行為，我們在做前端畫面時，很常透過Data Annotation 的方式，來驗證前端傳來的資料是否符合我們的定義，
 
-                    </div>
+ <!--more-->
 
-    <code class="language-cs">    public class ViewModel
+~~~ cs
+        public class ViewModel
         {
             /// <summary>
             /// UsrId 必填
@@ -44,7 +51,7 @@ View Model 與 DTO 到底有何不同的時候，想用這篇文章解釋一下�
             }
 
         }
-    </code>
+~~~
 
 各位可以看到上面這個View Model ，UsrId 一定要必填、Email 格式一定要正確、申請日期預設帶今日，這些都是我們定義好的前端行為。
 
@@ -64,6 +71,4 @@ DTO（Data Trasfer Object）我認為翻成「資料乘載物件」較為合適
 
 因為View 隨時都有可能變動，一變動我們一定會異動Model ，異動Model 近一步就會影響到我們的商業邏輯層跟資料存取層，這樣整個程式架構的耦合性就會變得很高！
 
-另外一些分開的好處可以參考「[[Asp .Net MVC] 淺談MVC系統架構](https://dotblogs.com.tw/harry/2016/06/08/105909)」
-
-                
+另外一些分開的好處可以參考「[[Asp .Net MVC] 淺談MVC系統架構](https://changyuhao625.github.io/tech/2016/06/08/mvc-architecture)」

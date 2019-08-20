@@ -1,4 +1,10 @@
-                    <div class="article__desc">
+---
+layout: post
+title: "[Asp .Net MVC] 使用ValidateAntiForgeryToken FilterAttribute 防範CSRF攻擊!"
+tags: ["Asp .Net MVC"]
+category: tech
+author: Harry Chang
+---
 
 最近產品使用標準MVC架構來開發，其中Asp.Net 有提供大量的HtmlHelper來協助開發者製作前端畫面。
 
@@ -6,13 +12,14 @@
 
 但Submit 後發現，畫面依然會重新載，並非透過Ajax 做部分區塊的資料更新。
 
-                    </div>
+ <!--more-->
 
 首先我們先了瞭解一下AjaxHelper 是如何幫我們達到「非同步更新」的功能。
 
 我們透過 <span style="color:#0000FF;">Ajax.BeginForm</span> 幫我們產生出相對應的Html ，cshtml 的 Code如下：
 
-    <code class="language-cs">@using (Ajax.BeginForm("Send", "Apply",
+~~~ cs 
+    @using (Ajax.BeginForm("Send", "Apply",
                         new AjaxOptions()
                         {
                             HttpMethod = "POST",//使用何種Http Method
@@ -22,7 +29,8 @@
     {
        //Content
        <button type="submit" class="btn btn-primary" />
-    }</code>
+    }
+~~~
 
 可以看到AjaxHelper 幫我自動產生出Form 的Html 區塊，較特別的是自動幫我加入了「data-ajax="true"」、「data-ajax-method="true"」... ，
 

@@ -18,7 +18,7 @@ RSS: false
 github_username:    changyuhao625
 #twitter_username:   huxpro
 #facebook_username:  huxpro
-#linkedin_username:  firstname-lastname-idxxxx
+linkedin_username:  changyuhao
 
 
 
@@ -77,7 +77,7 @@ ga_domain: auto
 
 
 # Sidebar settings
-sidebar: false                           # whether or not using Sidebar.
+sidebar: true                           # whether or not using Sidebar.
 #sidebar-about-description: ""
 sidebar-avatar: /img/avatar.harry.512.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
@@ -101,7 +101,7 @@ page-mathjax: false
 
 
 # Friends
-friends: [
+# friends: [
     # {
     # #     title: "Su",
     # #     href: "http://su.gallery/"
@@ -136,4 +136,4 @@ friends: [
     #     title: "解旻的博客",
     #     href: "http://xieminis.me/"
     # }
-]
+# ]

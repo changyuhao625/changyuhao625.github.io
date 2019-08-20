@@ -1,27 +1,39 @@
-                    <div class="article__desc">
+---
+layout: post
+title: "[C#] 擴充方法(Extension Methods)!"
+tags: ["C#"]
+category: tech
+author: Harry Chang
+---
 
 C# 擴充方法(Extension Methods) ，C# 3.0 的「新」功能，其實也不新了畢竟C# 6.0都要出了。「擴充方法」顧名思義在原生類別擴充新的方法出來供人使用。
 
-                    </div>
+ <!--more-->
 
 我們常使用的String 類別的其中有一個方法為Trim()，這個方法為去掉字串內前後的空白，
 
-    <code class="language-cs">string tempString=" Word ".Trim();</code>
+~~~ cs 
+string tempString=" Word ".Trim();
+~~~
 
 若我們想要有一個新的方法如「String 轉成 Int」，該如何時做呢？
 
 當然很多人會使用Convert.ToInt32() 的方法：
 
-    <code class="language-cs">string intStr = "1234567";
-    var tempInt = Convert.ToInt32(intStr);</code>
+~~~ cs 
+    string intStr = "1234567";
+    var tempInt = Convert.ToInt32(intStr);
+~~~
 
 當然這個方法不好，若是字串無法被轉成int 會拋錯誤。
 
 又或者是保險一點的方法 int.TryParse()：
 
-    <code class="language-cs">string intStr = "1234567";
+ ~~~ cs 
+    string intStr = "1234567";
     int tempInt = 0;
-    int.TryParse(intStr, out tempInt);</code>
+    int.TryParse(intStr, out tempInt);
+~~~
 
 但看起來又太過冗長。且若專案上很常使用這種轉換的話，重複的Code 會相當多，
 
@@ -29,12 +41,14 @@ C# 擴充方法(Extension Methods) ，C# 3.0 的「新」功能，其實也不
 
 以下介紹作法：
 
-    <code class="language-cs">public static int ToInt(this string str)
+~~~ cs 
+    public static int ToInt(this string str)
     {
        int tempInt = 0;
        int.TryParse(str, out tempInt);
        return tempInt;
-    }</code>
+    }
+~~~
 
 我們撰寫一個「<span style="color:#0000FF;">靜態( static )</span>」的方法ToInt()，回傳值型態為 int，傳入值型態為 String ，
 
@@ -44,7 +58,9 @@ C# 擴充方法(Extension Methods) ，C# 3.0 的「新」功能，其實也不
 
 完成後使用方法就超簡單啦，
 
-    <code class="language-cs">"12345".ToInt();</code>
+~~~ cs 
+"12345".ToInt();
+~~~
 
 是不是看起來超簡潔的！！
 

@@ -1,11 +1,21 @@
-                    <div class="article__desc">
+---
+layout: post
+title: "[jQuery] Global Ajax Event Handlers"
+tags: ["jQuery"]
+category: tech
+author: Harry Chang
+---
 
-先前產品自行封裝 Ajax 並實作 Ajax 送出後block UI，當然封裝有他一定的好處，但是萬一今天我不想用封裝的元件時，我又想要block UI時，寫法就會很麻煩。  
- 可能變成會這樣寫：
+先前產品自行封裝 Ajax 並實作 Ajax 送出後block UI，當然封裝有他一定的好處，
 
-                    </div>
+但是萬一今天我不想用封裝的元件時，我又想要block UI時，寫法就會很麻煩。  
 
-    <code class="language-javascript">       $.blockUI(LoadingOptions); 
+可能變成會這樣寫：
+
+ <!--more-->
+
+~~~ javascript
+           $.blockUI(LoadingOptions); 
            $.ajax({
                 url: url,
                 data: data,
@@ -17,11 +27,13 @@
                 error: function () {
                     $.unblockUI();
                 }
-            });</code>
+            });
+~~~
 
 今天分享Global Ajax Event Handlers，寫起來更簡單且直覺，程式碼如下：
 
-    <code class="language-javascript">    //Ajax 開始後，要做的事情
+~~~ javascript
+         //Ajax 開始後，要做的事情
         $(document).ajaxStart(function () {
             $.blockUI(LoadingOptions);
         });
@@ -32,7 +44,8 @@
         //Ajax 發生例外時，要做的事情
         $(document).ajaxError(function () {
             $.unblockUI();
-        });</code>
+        });
+~~~
 
 這些用法就可以把一些共用邏輯寫在這些事件裡面，進一步達到「關注點分離」的目標，即我只需要專注在該次 Ajax 動作的邏輯，而不需要去想 block UI的事情了。
 
@@ -43,5 +56,3 @@ lifecycle 為** ajaxStart > ajaxSend > ajaxSuccess / ajaxError > ajaxComple
 參考：
 
 [Category: Global Ajax Event Handlers](http:// https://api.jquery.com/category/ajax/global-ajax-event-handlers/)
-
-                

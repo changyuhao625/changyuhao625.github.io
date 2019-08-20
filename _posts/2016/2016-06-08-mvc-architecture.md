@@ -1,4 +1,10 @@
-                    <div class="article__desc">
+---
+layout: post
+title: "[Asp .Net MVC] 淺談MVC系統架構"
+tags: ["Asp .Net MVC"]
+category: tech
+author: Harry Chang
+---
 
 最近剛好有機會跨部門參與系統架構的討論， 碰到把ViewModel 傳進「商業邏輯層」的現象，
 
@@ -6,7 +12,8 @@
 
 也會順便探討不傳進去的「好處」有哪些！
 
-                    </div>
+ <!--more-->
+
 
 首先我們必須釐清兩樣東西「ViewModel」&「DTO (Data Transform Object)」，
 
@@ -39,5 +46,3 @@
     1.  若是我們把ViewModel 傳進商業邏輯，哪天我們想要做個手機版APP 或者是View 要大改造，因為我們把ViewModel 傳進商業邏輯層，因此我們換View 就會進而影響到商業邏輯層，就會造成我們在重複利用商業邏輯時上有些阻礙；反之，若是我們把握ViewModel 不傳進商業邏輯層的原則，那我們就可以很輕易地重複使用商業邏輯層！
 
 後續會再找機會把ViewModel & DTO 講得更清楚，若有講錯的地方或是建議，歡迎大家留言！
-
-                
