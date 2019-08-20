@@ -79,7 +79,7 @@ ga_domain: changyuhao625
 # Sidebar settings
 sidebar: false                           # whether or not using Sidebar.
 #sidebar-about-description: ""
-#sidebar-avatar: /img/avatar-hux-ny.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/avatar.harry.512.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
