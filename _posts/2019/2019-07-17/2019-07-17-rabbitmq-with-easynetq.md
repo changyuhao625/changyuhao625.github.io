@@ -45,7 +45,7 @@ author: Harry Chang
 
 上面簡單介紹了一些RabbitMQ Exchange的機制，接下來我們來動手做做看。
 
-###RabbitMQ 安裝
+### RabbitMQ 安裝
 
 首先透過Docker將RabbitMQ的環境建起來，我們先建立docker-compose檔案，
 
