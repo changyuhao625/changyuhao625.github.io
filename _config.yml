@@ -3,8 +3,8 @@ title: Harry Chang's Blog
 SEOTitle: Harry Chang's Blog
 header-img: img/home-bg.jpg
 email: changyuhao625@gmail.com
-description: "Share something interesting with you guys!"
-keyword: "Harry, blog, tech., Harry Chang's Blog"
+description: "Harry會在這分享各種技術心得, 同時也會分享一些敏捷相關的想法與引導方法！"
+keyword: "Harry, Harry Chang's Blog, .Net, Scrum, Agile"
 url: "https://changyuhao625.github.io/"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -17,7 +17,7 @@ RSS: false
 #zhihu_username:     huxpro
 github_username:    changyuhao625
 #twitter_username:   huxpro
-#facebook_username:  huxpro
+facebook_username:  Changyuhao625
 linkedin_username:  changyuhao
 
 
