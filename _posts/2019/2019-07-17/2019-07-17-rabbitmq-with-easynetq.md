@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "RabbitMQ 動手做做看"
+title: "[EasyNetQ]如何透過EasyNetQ API 來操作RabbitMQ"
 tags: [".Net","RabbitMQ","EasyNetQ"]
 category: tech
 author: Harry Chang
