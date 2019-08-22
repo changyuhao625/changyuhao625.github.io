@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[.Net Core] .Net Core 2.x Application 如何在SCM上運作!"
+title: "[.Net Core] .Net Core 2.x Console Application 變成Windows Service!"
 tags: [".Net Core","ServiceBase","Windows Service","SCM"]
 category: tech
 author: Harry Chang
@@ -14,7 +14,7 @@ author: Harry Chang
  
 但在.Net Core 3.0之前，並沒有ServiceBase可以直接使用，.Net Core 2.x 該怎麼做呢?
 
-透過一些資料發現可以透過<a target="_blank" href="https://docs.microsoft.com/zh-tw/dotnet/api/microsoft.extensions.hosting?view=aspnetcore-2.2">IHostedService</a>讓.Net Core Application 成為一個Windows Service。
+透過一些資料發現可以透過<a target="_blank" href="https://docs.microsoft.com/zh-tw/dotnet/api/microsoft.extensions.hosting?view=aspnetcore-2.2">IHostedService</a>讓.Net Core Console Application 成為一個Windows Service。
 
 我們來看看怎麼做!
 
