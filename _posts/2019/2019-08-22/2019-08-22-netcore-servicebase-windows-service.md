@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[.Net Core] .Net Core Console 如何在SCM上運作!"
+title: "[.Net Core] .Net Core 2.x Application 如何在SCM上運作!"
 tags: [".Net Core","ServiceBase","Windows Service","SCM"]
 category: tech
 author: Harry Chang
