@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+User-agent: *
+Disallow: /archive/
+
+Sitemap: https://changyuhao625.github.io/sitemap.xml
