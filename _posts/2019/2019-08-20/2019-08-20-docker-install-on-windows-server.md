@@ -10,7 +10,7 @@ author: Harry Chang
 
 最近發現Windows Server上的Docker非常不穩，常常需要重新啟動Docker服務才會正常，
 
-仔細一查才發現，原來我們的Docker裝的是Desktop版本，所所以只要User Timeout被登出後，
+仔細一查才發現，原來我們的Docker裝的是Desktop版本，所以只要User Timeout被登出後，
 
 Docker 也會一起被關閉，決定把Docker 換成EE版本的，照著官方說明安裝一直無法順利安裝，
 
