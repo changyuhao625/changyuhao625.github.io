@@ -3,5 +3,6 @@ Allow: /
 
 User-agent: *
 Disallow: /archive/
+Disallow: /archive
 
 Sitemap: https://changyuhao625.github.io/sitemap.xml
