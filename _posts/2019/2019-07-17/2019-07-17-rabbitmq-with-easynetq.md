@@ -145,4 +145,4 @@ EasyNetQ 是一個可以幫助我們操作RabbitMQ的套件，可以透過nuget�
 本篇文章只是最一個最簡單的示範與介紹，陸續會再補上更深入的實做。
 
 ## 參考
-[https://blog.csdn.net/chendaoqiu/article/details/48440633](https://blog.csdn.net/chendaoqiu/article/details/48440633)
+[https://www.ctolib.com/SFLAQiu-RabbitMQDemo.html](https://www.ctolib.com/SFLAQiu-RabbitMQDemo.html)
