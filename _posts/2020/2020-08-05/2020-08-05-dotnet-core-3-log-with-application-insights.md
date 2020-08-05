@@ -106,7 +106,7 @@ Ex:
 ~~~
 
 但Application Insights 上只看得到Warning以上的Log，
-![application-insights-record]](https://raw.githubusercontent.com/changyuhao625/changyuhao625.github.io/master/images/blog/2020/08/application-insights-record.png "application-insights-record"){:width="800px" height="600px"}
+![application-insights-record](https://raw.githubusercontent.com/changyuhao625/changyuhao625.github.io/master/images/blog/2020/08/application-insights-record.png "application-insights-record"){:width="800px" height="600px"}
 
 dotnet core 預設只記錄warning等級以上的訊息，若需要紀錄其他層級，則需要在ConfigureLogging做一些調整，
 
