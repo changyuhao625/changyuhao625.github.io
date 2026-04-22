@@ -2,8 +2,9 @@
 title: "團隊共創法-隨手小記"
 date: 2019-07-20
 category: softskill
-tags: ["團隊共創法", "Facilitator"]
+tags: ["團隊共創法", "Facilitator", "Consensus Workshop", "ORID", "引導"]
 author: "Harry Chang"
+description: "團隊共創法五個步驟隨手小記：內容介紹（釐清焦點問題範疇）、腦力激盪（A5 卡片，每張 7–9 字）、組織群組（三輪依 Insight 直覺分群，前兩輪問深度/廣度）、命名群組（找背後洞見）、決定意義（用 ORID 收斂並決定行動）。"
 ---
 
 ## 前言

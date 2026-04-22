@@ -2,8 +2,9 @@
 title: "[NHibernate] Session 與 Lazy Loading"
 date: 2016-12-14
 category: tech
-tags: ["NHibernate", "Session"]
+tags: ["NHibernate", "Session", "Lazy Loading", "ORM"]
 author: "Harry Chang"
+description: "NHibernate 在同一個 Session 內 Save 實體後再 Get，會直接回傳 Session 內原物件而不重新查詢或觸發 Lazy Loading；因此沒有先把 B 指給 A.B，就算 B 已存入 Session，也無法從 A.B 取得，需在 Save 前把關聯建立好。"
 ---
 
 ## 前言

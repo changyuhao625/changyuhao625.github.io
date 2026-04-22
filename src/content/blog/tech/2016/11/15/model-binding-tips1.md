@@ -2,8 +2,9 @@
 title: "[Asp.Net MVC] An item with the same key has already been added！"
 date: 2016-11-15
 category: tech
-tags: ["Asp.Net MVC", "Model Binding"]
+tags: ["Asp.Net MVC", "Model Binding", "DefaultModelBinder"]
 author: "Harry Chang"
+description: "Asp.Net MVC 執行時出現「An item with the same key has already been added」+「System.Web.Mvc.DefaultModelBinder.BindProperty」錯誤，原因是 Model Binding 不區分大小寫：子類別的 Email 與父類 BaseModel 的 email 會被視為同一 key。"
 ---
 
 「<span style="color:darkred;">*An item with the same key has already been added*</span>」系統執行到一半，突然跳出這個訊息，

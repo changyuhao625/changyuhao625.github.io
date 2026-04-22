@@ -2,8 +2,9 @@
 title: "ORID 焦點討論法"
 date: 2019-07-18
 category: softskill
-tags: ["ORID", "Facilitator", "焦點討論法"]
+tags: ["ORID", "Facilitator", "焦點討論法", "引導", "Scrum"]
 author: "Harry Chang"
+description: "ORID 焦點討論法是引導者入門工具之一，透過 O 客觀事實、R 情緒反映、I 詮釋意義、D 行動決定四個層次的提問，引導參與者自然思考；文中分享圍繞目標設計問題、拿捏顆粒度、避免「為什麼」、不預設立場、抓尾巴等引導技巧。"
 ---
 
 ## 前言

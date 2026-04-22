@@ -2,8 +2,9 @@
 title: "[Asp.Net] 檔案上傳長度限制"
 date: 2016-11-01
 category: tech
-tags: ["Asp.Net"]
+tags: ["Asp.Net", "web.config", "Upload", "httpRuntime"]
 author: "Harry Chang"
+description: "Asp.Net 預設單次 HttpRequest 上限 4096 KB，超過會拋 HttpException「超出最大的要求長度」；可在 web.config 的 httpRuntime 調整 maxRequestLength、requestLengthDiskThreshold 與 executionTimeout 三個參數解除限制。"
 ---
 
 今天在測試檔案上傳時，發現上傳特定幾個檔案時會失敗，

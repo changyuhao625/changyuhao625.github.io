@@ -2,8 +2,9 @@
 title: "[EasyNetQ]如何透過EasyNetQ API 來操作RabbitMQ"
 date: 2019-07-17
 category: tech
-tags: [".Net", "RabbitMQ", "EasyNetQ"]
+tags: [".Net", "RabbitMQ", "EasyNetQ", "Docker", "Message Queue", "Pub-Sub"]
 author: "Harry Chang"
+description: "部門為解決 Redis Pub/Sub 掉訊息、難監控、訊息無法持久化的風險改用 RabbitMQ；本文介紹 Fanout、Direct、Topic 三種 Exchange 機制，並以 docker-compose (rabbitmq:3-management) 建置環境，再用 EasyNetQ 的 RabbitHutch.CreateBus 實作 Direct 的 Producer 與 Consumer。"
 ---
 
 ## 前言

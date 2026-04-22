@@ -2,8 +2,9 @@
 title: "[jQuery] 為何不能透過 ajax 直接下載檔案?"
 date: 2016-11-03
 category: tech
-tags: ["jQuery", "ajax"]
+tags: ["jQuery", "ajax", "File Download", "Browser Security"]
 author: "Harry Chang"
+description: "從兩個角度解釋為何不能用 jQuery ajax 下載檔案：ajax 本身僅支援 xml/json/script/html 等文字型態 dataType，並非為下載二進位檔而設計；此外瀏覽器基於安全考量會阻止 JavaScript 直接把資料寫入本機，避免惡意腳本任意下載檔案。"
 ---
 
 ## 前言

@@ -2,8 +2,9 @@
 title: "[Asp .Net MVC] 淺談MVC系統架構"
 date: 2016-06-08
 category: tech
-tags: ["Asp .Net MVC"]
+tags: ["Asp .Net MVC", "Architecture", "ViewModel", "DTO", "AutoMapper"]
 author: "Harry Chang"
+description: "整理 Asp.Net MVC 分層架構：Controller 接到 ViewModel 後，應透過 AutoMapper 轉成 DTO 或 Entity 再進入商業邏輯層與資料存取層，避免 ViewModel 污染 Service 層，換 View 或做單元測試時都能更容易。"
 ---
 
 最近剛好有機會跨部門參與系統架構的討論， 碰到把ViewModel 傳進「商業邏輯層」的現象，

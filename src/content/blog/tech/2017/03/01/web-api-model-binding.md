@@ -2,8 +2,9 @@
 title: "[Web API 2] 客製化ModelBinder"
 date: 2017-03-01
 category: tech
-tags: ["Model Binding", "ModelBinder"]
+tags: ["Model Binding", "ModelBinder", "Web API 2", "Asp.Net"]
 author: "Harry Chang"
+description: "Web API 2 客製化 ModelBinder 時出現「無法從 BaseBinder 建立 IModelBinder」例外，原因是 MVC 的 System.Web.Mvc.IModelBinder 與 Web API 的 System.Web.Http.IModelBinder 雖同名但在不同元件，using 引錯就會衝突，MVC 6 之後合併才解決。"
 ---
 
 產品API在模型細節(Model Binding)上有特別的需求，因此必須自行客製化模型細節的方式，

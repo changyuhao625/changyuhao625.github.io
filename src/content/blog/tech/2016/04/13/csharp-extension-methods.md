@@ -2,8 +2,9 @@
 title: "[C#] 擴充方法(Extension Methods)!"
 date: 2016-04-13
 category: tech
-tags: ["C#"]
+tags: ["C#", "Extension Methods", "C# 3.0"]
 author: "Harry Chang"
+description: "介紹 C# 3.0 擴充方法 (Extension Methods) 的用途與寫法：以 static 方法加上 this 關鍵字即可為 String 等原生類別擴充新方法，例如把 int.TryParse 封裝成 \"12345\".ToInt()，讓常用轉換寫起來更簡潔。"
 ---
 
 C# 擴充方法(Extension Methods) ，C# 3.0 的「新」功能，其實也不新了畢竟C# 6.0都要出了。「擴充方法」顧名思義在原生類別擴充新的方法出來供人使用。

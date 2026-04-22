@@ -2,8 +2,9 @@
 title: "[SMTP] 郵件主旨亂碼！"
 date: 2016-08-08
 category: tech
-tags: ["C#", "SMTP"]
+tags: ["C#", "SMTP", "MailMessage", ".Net Framework 4", "Base64"]
 author: "Harry Chang"
+description: "針對 .Net Framework 4 郵件主旨含非 ASCII 字元且 UTF-8 編碼超過 41 bytes 會被重複 Encode 兩次導致亂碼的 Bug，示範不升級的解法：先把主旨 Convert.ToBase64String，再以 =?utf-8?B?{content}?= 格式指派給 MailMessage.Subject。"
 ---
 
 今天發現一個 bug 為郵件主旨(附件)在某些情形下變成亂碼，查了一下資料，發現是.Net Framework 4的 bug 而且是個陳年 bug 呀，發生的原因為字串含有非 ASCII 編碼的字元，且長度又超過 41 個 UTF-8 Encode Bytes 時，就會被重複Encode兩次，導致顯示成亂碼。

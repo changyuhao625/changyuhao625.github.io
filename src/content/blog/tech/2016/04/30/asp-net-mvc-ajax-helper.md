@@ -1,9 +1,10 @@
 ---
-title: "[Asp .Net MVC] 使用ValidateAntiForgeryToken FilterAttribute 防範CSRF攻擊!"
+title: "[Asp .Net MVC] Ajax.BeginForm 與 unobtrusive AJAX"
 date: 2016-04-30
 category: tech
-tags: ["Asp .Net MVC"]
+tags: ["Asp .Net MVC", "AjaxHelper", "unobtrusive AJAX", "jQuery"]
 author: "Harry Chang"
+description: "Asp.Net MVC 的 AjaxHelper 透過 Ajax.BeginForm 產生帶 data-ajax 屬性的表單，但瀏覽器仍會走一般 Form Submit；需安裝 NuGet 的 unobtrusive AJAX 套件引用 jquery.unobtrusive-ajax.js，才會偵測屬性並改以 Ajax 送出。"
 ---
 
 最近產品使用標準MVC架構來開發，其中Asp.Net 有提供大量的HtmlHelper來協助開發者製作前端畫面。

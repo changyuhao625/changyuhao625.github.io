@@ -2,8 +2,9 @@
 title: "[Asp.Net MVC] MVC 網站部署失敗"
 date: 2016-11-02
 category: tech
-tags: ["Asp.Net MVC"]
+tags: ["Asp.Net MVC", "IIS", "Windows Server", "Deployment"]
 author: "Harry Chang"
+description: "Asp.Net MVC 部署到舊版 IIS / Windows Server 2008 時出現 HTTP Error 403.14 Forbidden，暫時解法是在 web.config 的 system.webServer 加上 runAllManagedModulesForAllRequests=\"true\"；此設定會影響效能，建議改以升級伺服器或安裝補丁處理。"
 ---
 
 今天部署網站到客戶端的時候，發現一直無法讓網站順利啟動，一直出現以下錯誤，

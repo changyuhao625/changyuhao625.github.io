@@ -2,8 +2,9 @@
 title: "[Azure]Dotnet Core 3 Log With Application Insights"
 date: 2020-08-05
 category: tech
-tags: ["dotnet core 3", "Azure", "Application Insights"]
+tags: ["dotnet core 3", "Azure", "Application Insights", "ILogger", "Logging", "Telemetry"]
 author: "Harry Chang"
+description: "在 .Net Core 3 專案串接 Azure Application Insights：安裝 Microsoft.ApplicationInsights.AspNetCore，Startup.ConfigureServices 加入 AddApplicationInsightsTelemetry，並在 appsettings.json 設定 InstrumentationKey；預設僅記錄 Warning 以上等級，可在 ConfigureLogging 以 AddFilter<ApplicationInsightsLoggerProvider> 調整為 Information。"
 ---
 
 ## 前言

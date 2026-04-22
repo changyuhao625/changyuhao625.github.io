@@ -2,8 +2,9 @@
 title: "[Asp .Net MVC] ViewMode vs DTO(Data Transfer Object)"
 date: 2016-06-14
 category: tech
-tags: ["View Model", "DTO"]
+tags: ["View Model", "DTO", "POCO", "Asp .Net MVC", "Data Annotation"]
 author: "Harry Chang"
+description: "ViewModel 是帶有狀態與行為（如 Required、EmailAddress 等 Data Annotation 驗證）的 POCO；DTO 則是純資料搬運物件，不包含行為。分開兩者可避免 View 變動時牽動商業邏輯層與資料存取層，降低耦合。"
 ---
 
 View Model 與 DTO 到底有何不同的時候，想用這篇文章解釋一下差異。

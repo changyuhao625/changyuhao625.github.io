@@ -2,8 +2,9 @@
 title: "[Asp .Net MVC] ActionLink 頁面跳轉異常的問題"
 date: 2016-04-13
 category: tech
-tags: ["Asp .Net MVC"]
+tags: ["Asp .Net MVC", "HtmlHelper", "Area", "Routing"]
 author: "Harry Chang"
+description: "Asp.Net MVC 使用 @Html.ActionLink 若專案切割了 Area，產生的連結會被自動加上 Area Name 並不斷疊加，最終造成 Routing 失敗；解法是傳入 area = string.Empty 強制清空 Area 路由參數。"
 ---
 
 專案上碰到HyperLink 自動被加上了Area Name ，一來一往越來越多Area Name ，導致 Routing 異常的錯誤。

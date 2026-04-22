@@ -2,8 +2,9 @@
 title: "[VS] 建置後的事件!"
 date: 2016-08-25
 category: tech
-tags: ["VS"]
+tags: ["VS", "Visual Studio", "Build Event", "cmd"]
 author: "Harry Chang"
+description: "Visual Studio 專案屬性「建置事件」頁籤可在建置前/後自動執行 cmd，例如以 call \"$(ProjectDir)AfterCompile\\xxx.cmd\" 搬移產出的 dll，避免手動操作遺漏；但 cmd 若等待使用者輸入會造成建置失敗。"
 ---
 
 最近產品剛好有一個特殊的需求，就是專案建置好後，要把專案建置出來的東西搬到特定目錄下，
