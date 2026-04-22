@@ -2,8 +2,9 @@
 title: "[jQuery] event.preventDefault() 與 event.stopPropagation() 的差異"
 date: 2016-09-10
 category: tech
-tags: ["jQuery"]
+tags: ["jQuery", "JavaScript", "Event"]
 author: "Harry Chang"
+description: "比較 event.preventDefault() 與 event.stopPropagation() 的差異：前者終止元素的預設行為（例如超連結自動導頁），後者終止事件往父層元素傳導（冒泡）；jQuery 使用 return false 會一次同時觸發兩者。"
 ---
 
 我們在撰寫前端畫面時，常常會使用 <span style="color:#0000FF;">return false</span> 來終止函數運行，其實return false 會包含以下三種行為：

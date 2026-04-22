@@ -2,8 +2,9 @@
 title: "[.Net Core] .Net Core 2.x Console Application 變成Windows Service!"
 date: 2019-08-22
 category: tech
-tags: [".Net Core", "ServiceBase", "Windows Service", "SCM"]
+tags: [".Net Core", ".Net Core 2.x", "ServiceBase", "Windows Service", "SCM", "IHostedService", "IHostLifetime"]
 author: "Harry Chang"
+description: ".Net Core 3.0 之前沒有 ServiceBase 可直接使用，本文示範在 .Net Core 2.x 透過實作 IHostLifetime (ServiceBaseLifetime) 與 IHostedService，再寫 HostBuilder 擴充方法 UseServiceBaseLifetime/RunAsServiceAsync，最後以 sc create 把 Console Application 註冊成受 SCM 控管的 Windows Service。"
 ---
 
 ## 前言

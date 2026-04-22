@@ -2,8 +2,9 @@
 title: "[Asp.Net MVC] Razor Engine"
 date: 2017-03-06
 category: tech
-tags: ["Asp.Net MVC"]
+tags: ["Asp.Net MVC", "RazorEngine", "View Engine", "cshtml"]
 author: "Harry Chang"
+description: "在非 MVC 架構上透過 NuGet 安裝 RazorEngine，把 .cshtml 模板交給 Engine.Razor.RunCompile 編譯成 HTML，並可傳入 ViewModel；進階可使用 TemplateServiceConfiguration 設定 Namespaces 與 DelegateTemplateManager 等 View Config。"
 ---
 
 Razor 是MVC 裡面很重要的View Engine，我們在MVC裡面可以很直覺的Return「.cshtml」或是「.vbhtml」的檢視畫面，

@@ -2,8 +2,9 @@
 title: "[Asp.Net] Connection Pooling"
 date: 2017-04-20
 category: tech
-tags: ["Asp.Net"]
+tags: ["Asp.Net", "SqlConnection", "Connection Pool", "Performance", ".Net"]
 author: "Harry Chang"
+description: "解析 .Net SqlConnection Connection Pooling 機制：using 結束時連線並未真正釋放，而是回收進 Pool 供下一次同樣連線字串重用，約 4–8 分鐘才真正關閉；未正確釋放或 Pool Size 不足即可能觸發「已超過連接逾時的設定」，排查可檢查 using、Pool Size 與 Connection Lifetime。"
 ---
 
 最近系統時不時就出現「<span style="color:#FF0000;">*已超過連接逾時的設定。在取得集區連接之前超過逾時等待的時間，可能的原因為所有的共用連接已在使用中，並已達共用集區大小的最大值。*</span>」的錯誤訊息。

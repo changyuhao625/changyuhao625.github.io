@@ -2,8 +2,9 @@
 title: "[LINQ] 增加可讀性的好寫法!"
 date: 2016-08-03
 category: tech
-tags: ["C#", "LINQ"]
+tags: ["C#", "LINQ", "Lambda", "Code Review"]
 author: "Harry Chang"
+description: "Code Review 案例：同仁原本用雙層 foreach 判斷 HandleWays 是否包含 CaseHandles，可改用一行 LINQ（from/where/Contains）或 Lambda（HandleWays.Where(d => CaseHandles.Contains(d))）大幅提升可讀性。"
 ---
 
 今天幫同仁 Code Review 發現他寫了一段雙層迴圈，但是其實可以用一段 LINQ 就解決掉，如下：

@@ -2,8 +2,9 @@
 title: "[NHibernate] Session Update 奇怪的寫法"
 date: 2016-07-12
 category: tech
-tags: ["NHibernate"]
+tags: ["NHibernate", "Session", "Code Review"]
 author: "Harry Chang"
+description: "NHibernate 會自動監控透過 Session.Get 載入的實體，異動屬性後只要 Session.Flush 就會同步到資料表；因此同仁程式碼中額外呼叫的 Session.Update 其實是多餘的寫法。"
 ---
 
 最近在做產品的產品，底層是使用NHibernate，Review 時發現同仁在 Update Table 有一些多餘的寫法，

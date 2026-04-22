@@ -2,8 +2,9 @@
 title: "[C#] Null 條件運算子(Null Conditional Operators)"
 date: 2017-07-14
 category: tech
-tags: ["C#"]
+tags: ["C#", "Null Conditional Operators", "Null Coalescing"]
 author: "Harry Chang"
+description: "介紹 C# Null 條件運算子 ?. 與合併運算子 ??：customer?.Id ?? \"123456\" 會在 customer 或 customer.Id 為 null 時回傳預設值，等同於 if (customer == null || customer.Id == null) 的判斷，把防空程式碼縮成一行。"
 ---
 
 今天在同仁的Code裡面看到陌生的運算子，如下：

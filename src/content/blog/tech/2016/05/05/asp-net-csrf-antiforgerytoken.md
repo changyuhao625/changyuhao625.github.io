@@ -2,8 +2,9 @@
 title: "[Asp .Net MVC] 使用ValidateAntiForgeryToken FilterAttribute 防範CSRF攻擊!"
 date: 2016-05-05
 category: tech
-tags: ["Asp .Net MVC"]
+tags: ["Asp .Net MVC", "CSRF", "AntiForgeryToken", "Security", "jQuery"]
 author: "Harry Chang"
+description: "說明如何在 Asp.Net MVC 以 @Html.AntiForgeryToken 搭配 [ValidateAntiForgeryToken] FilterAttribute 防範 CSRF；並示範改用 jQuery $.ajax 時，如何把 __RequestVerificationToken 帶進 data 中通過防偽基元驗證。"
 ---
 
 CSRF(Cross Site Request Forgery) 是一種駭客常用手段，網路上可以找到許多解釋，這邊就不再詳述，

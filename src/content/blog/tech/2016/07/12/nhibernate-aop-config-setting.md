@@ -2,8 +2,9 @@
 title: "[Spring.Net] Aop NHibernate Transaction失效了！"
 date: 2016-07-12
 category: tech
-tags: ["Spring.Net", "NHibernate"]
+tags: ["Spring.Net", "NHibernate", "AOP", "Transaction"]
 author: "Harry Chang"
+description: "排查 Spring.Net AOP 造成 NHibernate Transaction 失效、物件沒有被掛上 Proxy 的問題：SdkRegularExpressionMethodPointcut 設定多個 pattern 時需改用 patterns 搭配 list，否則只有最後一條規則會生效。"
 ---
 
 今天產品發現NHibernate Session Update 失效了，查了很久發現是我們在Service Layer 的 Aop Transaction 失效了，

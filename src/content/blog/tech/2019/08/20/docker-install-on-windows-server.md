@@ -2,8 +2,9 @@
 title: "[Docker] 如何在Windows Server上安裝Docker"
 date: 2019-08-20
 category: tech
-tags: ["Docker", "Windows Server"]
+tags: ["Docker", "Docker EE", "Windows Server", "PowerShell", "DockerMsftProvider"]
 author: "Harry Chang"
+description: "在 Windows Server 2016 以上安裝 Docker EE 的踩坑紀錄：使用 PowerShell 以 Install-Module DockerMsftProvider 與 Install-Package -Name docker 安裝時會找不到 docker-19-03-1.zip，需先用 Start-BitsTransfer 下載並搭配 Get-FileHash 才能順利完成，最後以 Start-Service Docker 啟動。"
 ---
 
 ## 前言

@@ -2,8 +2,9 @@
 title: "[jQuery] Global Ajax Event Handlers"
 date: 2016-07-25
 category: tech
-tags: ["jQuery"]
+tags: ["jQuery", "Ajax", "blockUI"]
 author: "Harry Chang"
+description: "jQuery 提供 ajaxStart、ajaxSend、ajaxSuccess、ajaxError、ajaxComplete、ajaxStop 六個 Global Ajax Event Handlers，可把 blockUI / unblockUI 等共用邏輯集中處理，達到關注點分離，不必每次 $.ajax 都重複撰寫。"
 ---
 
 先前產品自行封裝 Ajax 並實作 Ajax 送出後block UI，當然封裝有他一定的好處，

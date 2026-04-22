@@ -2,8 +2,9 @@
 title: "[jQuery] $.isEmptyObject 小提醒 !"
 date: 2016-12-09
 category: tech
-tags: ["jQuery"]
+tags: ["jQuery", "JavaScript", "isEmptyObject", "isPlainObject"]
 author: "Harry Chang"
+description: "jQuery $.isEmptyObject 只能用在「單純的 JavaScript 物件」，對 boolean、number、null 會誤判為空；建議改用 $.isPlainObject 先確認是否為簡單物件再判斷，本文提供在 Chrome 實測 boolean/number/float/string/null/{}/{a:\"\"} 的結果。"
 ---
 
 專案上很多前端驗證都會使用jQuery「$.isEmptyObject」來檢核參數是否為空，
