@@ -1,9 +1,47 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { SOCIAL_LINKS } from "../consts";
+import { SOCIAL_LINKS, SITE_URL } from "../consts";
+
+const aboutDescription =
+  "軟體開發 10 年。從 0 到 1 打造過產品，也從無到有拉起過團隊 — 組織建立、團隊領導、產品打磨、系統規模化都經歷過。";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  mainEntity: {
+    "@type": "Person",
+    name: "Harry Chang",
+    alternateName: "changyuhao",
+    url: `${SITE_URL}/about/`,
+    image: `${SITE_URL}/img/avatar.harry.512.png`,
+    description: aboutDescription,
+    jobTitle: "Software Engineer",
+    knowsAbout: [
+      "C#",
+      ".NET",
+      "ASP.NET MVC",
+      "ASP.NET Web API",
+      ".NET Core",
+      "Clean Architecture",
+      "Unit Testing",
+      "Scrum",
+      "Agile",
+    ],
+    email: `mailto:${SOCIAL_LINKS.email}`,
+    sameAs: [
+      `https://github.com/${SOCIAL_LINKS.github}`,
+      `https://www.linkedin.com/in/${SOCIAL_LINKS.linkedin}`,
+      `https://www.facebook.com/${SOCIAL_LINKS.facebook}`,
+    ],
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      name: "Professional Scrum Master I (PSM I)",
+    },
+  },
+};
 ---
 
-<BaseLayout title="About" description="About Harry Chang">
+<BaseLayout title="About" description={aboutDescription} jsonLd={jsonLd}>
   <section class="hero">
     <h1>About</h1>
     <p>10 年軟體開發資歷 · 從 0 到 1 打造產品與團隊 · 敏捷實踐者</p>

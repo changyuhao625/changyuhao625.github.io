@@ -15,15 +15,22 @@ interface Props {
     author?: string;
     tags?: string[];
   };
+  jsonLd?: Record<string, any> | Array<Record<string, any>>;
 }
 
-const { title, description, image, article } = Astro.props;
+const { title, description, image, article, jsonLd } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="zh-Hant">
   <head>
-    <BaseHead title={title} description={description} image={image} article={article} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      article={article}
+      jsonLd={jsonLd}
+    />
     <ClientRouter />
   </head>
   <body>

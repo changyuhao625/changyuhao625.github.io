@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FormattedDate from "../components/FormattedDate.astro";
-import { SITE_DESCRIPTION, POSTS_PER_PAGE } from "../consts";
+import { SITE_DESCRIPTION, POSTS_PER_PAGE, SITE_TITLE, SITE_URL } from "../consts";
 import { readingTime } from "../utils/reading-time";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
@@ -11,6 +11,39 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 
 const first = posts.slice(0, POSTS_PER_PAGE);
 const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_TITLE,
+    url: `${SITE_URL}/`,
+    description: SITE_DESCRIPTION,
+    inLanguage: "zh-Hant",
+    author: { "@type": "Person", name: "Harry Chang", url: `${SITE_URL}/about/` },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_URL}/tags/{search_term_string}/`,
+      "query-input": "required name=search_term_string",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: SITE_TITLE,
+    url: `${SITE_URL}/`,
+    description: SITE_DESCRIPTION,
+    inLanguage: "zh-Hant",
+    author: { "@type": "Person", name: "Harry Chang", url: `${SITE_URL}/about/` },
+    blogPost: posts.slice(0, 10).map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.data.title,
+      url: `${SITE_URL}/${p.id}/`,
+      datePublished: p.data.date.toISOString(),
+      keywords: p.data.tags.join(", "),
+    })),
+  },
+];
 
 function excerpt(body: string) {
   const plain = body
@@ -26,7 +59,7 @@ function excerpt(body: string) {
 }
 ---
 
-<BaseLayout description={SITE_DESCRIPTION}>
+<BaseLayout description={SITE_DESCRIPTION} jsonLd={jsonLd}>
   <section class="hero">
     <h1>Harry Chang</h1>
     <p>{SITE_DESCRIPTION}</p>

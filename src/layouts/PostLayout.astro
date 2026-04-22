@@ -22,6 +22,7 @@ interface Props {
   headerImg?: string;
   readingMinutes: number;
   headings: MarkdownHeading[];
+  jsonLd?: Record<string, any> | Array<Record<string, any>>;
 }
 
 const {
@@ -36,6 +37,7 @@ const {
   headerImg,
   readingMinutes,
   headings,
+  jsonLd,
 } = Astro.props;
 
 const hasImage = Boolean(headerImg);
@@ -49,11 +51,14 @@ const heroStyle = hasImage ? `background-image: url(${headerImg});` : undefined;
       title={title}
       description={description ?? subtitle ?? title}
       image={headerImg}
+      keywords={tags}
       article={{
         publishedTime: date.toISOString(),
         author,
         tags,
+        section: category,
       }}
+      jsonLd={jsonLd}
     />
     <ClientRouter />
   </head>
