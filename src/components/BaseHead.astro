@@ -38,7 +38,8 @@ const ogImage = new URL(image, Astro.site).toString();
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
 <meta name="keywords" content={SITE_KEYWORDS} />
-<meta name="theme-color" content="#000000" />
+<meta name="theme-color" content="#fdfaf6" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#14110d" media="(prefers-color-scheme: dark)" />
 <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
 
 <link rel="canonical" href={canonicalURL} />
@@ -46,6 +47,28 @@ const ogImage = new URL(image, Astro.site).toString();
 <link rel="manifest" href="/pwa/manifest.json" />
 <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
 <link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- Fonts: Inter (Latin), Noto Sans TC (CJK), JetBrains Mono (code) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+/>
+
+<!-- Theme init (must run before paint to avoid flash) -->
+<script is:inline>
+  (function () {
+    try {
+      const stored = localStorage.getItem("theme");
+      const system = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+      const theme = stored || system;
+      document.documentElement.setAttribute("data-theme", theme);
+    } catch (e) {}
+  })();
+</script>
 
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />

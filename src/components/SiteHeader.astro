@@ -1,12 +1,35 @@
 ---
 import { SITE_TITLE, NAV_LINKS } from "../consts";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const pathname = Astro.url.pathname;
+function isActive(href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}
 ---
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="/">{SITE_TITLE}</a>
-    <nav>
-      {NAV_LINKS.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a class="brand" href="/">
+      <img
+        class="brand-avatar"
+        src="/img/avatar.harry.512.png"
+        alt="Harry Chang avatar"
+        width="32"
+        height="32"
+        loading="eager"
+      />
+      <span>{SITE_TITLE}</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      {NAV_LINKS.map((l) => (
+        <a href={l.href} aria-current={isActive(l.href) ? "page" : undefined}>
+          {l.label}
+        </a>
+      ))}
+      <ThemeToggle />
     </nav>
   </div>
 </header>

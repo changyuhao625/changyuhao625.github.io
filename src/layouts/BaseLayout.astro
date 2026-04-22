@@ -1,7 +1,10 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import BaseHead from "../components/BaseHead.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import ReadingProgress from "../components/ReadingProgress.astro";
+import CodeBlockEnhancer from "../components/CodeBlockEnhancer.astro";
 
 interface Props {
   title?: string;
@@ -21,8 +24,10 @@ const { title, description, image, article } = Astro.props;
 <html lang="zh-Hant">
   <head>
     <BaseHead title={title} description={description} image={image} article={article} />
+    <ClientRouter />
   </head>
   <body>
+    <ReadingProgress />
     <SiteHeader />
     <main>
       <div class="container">
@@ -30,5 +35,6 @@ const { title, description, image, article } = Astro.props;
       </div>
     </main>
     <SiteFooter />
+    <CodeBlockEnhancer />
   </body>
 </html>

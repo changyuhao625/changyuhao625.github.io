@@ -4,6 +4,7 @@ import type { GetStaticPaths } from "astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import { SITE_DESCRIPTION, POSTS_PER_PAGE } from "../../consts";
+import { readingTime } from "../../utils/reading-time";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
@@ -44,20 +45,25 @@ const prevUrl =
     <h1>Page {page.currentPage} / {page.lastPage}</h1>
   </section>
 
-  {page.data.map((post) => (
-    <article class="post-preview">
-      <a href={postUrl(post.id)}>
-        <h2 class="post-title">{post.data.title}</h2>
-        {post.data.subtitle && <h3 class="post-subtitle">{post.data.subtitle}</h3>}
-        <p class="post-excerpt">{excerpt(post.body ?? "")}</p>
-      </a>
-      <p class="post-meta">
-        Posted by {post.data.author} on <FormattedDate date={post.data.date} />
-        · <span class="tag">{post.data.category}</span>
-      </p>
-      <hr />
-    </article>
-  ))}
+  {page.data.map((post) => {
+    const { minutes } = readingTime(post.body ?? "");
+    return (
+      <article class="post-preview">
+        <a href={postUrl(post.id)}>
+          <h2 class="post-title">{post.data.title}</h2>
+          {post.data.subtitle && <h3 class="post-subtitle">{post.data.subtitle}</h3>}
+          <p class="post-excerpt">{excerpt(post.body ?? "")}</p>
+        </a>
+        <p class="post-meta">
+          <FormattedDate date={post.data.date} />
+          <span class="dot"></span>
+          <span>{minutes} min read</span>
+          <span class="dot"></span>
+          <span class="tag">{post.data.category}</span>
+        </p>
+      </article>
+    );
+  })}
 
   <ul class="pager">
     <li class="previous">

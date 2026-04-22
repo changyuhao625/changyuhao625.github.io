@@ -11,6 +11,7 @@ export const POSTS_PER_PAGE = 10;
 export const NAV_LINKS: Array<{ label: string; href: string }> = [
   { label: "Home", href: "/" },
   { label: "Archive", href: "/archive/" },
+  { label: "Tags", href: "/tags/" },
   { label: "About", href: "/about/" },
 ];
 
