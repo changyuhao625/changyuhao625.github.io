@@ -4,6 +4,7 @@ import {
   SITE_DESCRIPTION,
   SITE_KEYWORDS,
   GA_MEASUREMENT_ID,
+  GOOGLE_SITE_VERIFICATION,
 } from "../consts";
 import "../styles/global.css";
 
@@ -52,7 +53,9 @@ const ogImage = new URL(image, Astro.site).toString();
 <meta name="author" content="Harry Chang" />
 <meta name="theme-color" content="#fdfaf6" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#14110d" media="(prefers-color-scheme: dark)" />
-<meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+{GOOGLE_SITE_VERIFICATION && (
+  <meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />
+)}
 
 <link rel="canonical" href={canonicalURL} />
 <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />

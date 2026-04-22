@@ -6,6 +6,7 @@ export const SITE_AUTHOR = "Harry Chang";
 export const SITE_URL = "https://changyuhao625.github.io";
 export const DISQUS_SHORTNAME = "changyuhao625-github-io";
 export const GA_MEASUREMENT_ID = ""; // TODO: replace with GA4 ID (e.g. "G-XXXXXXXXXX")
+export const GOOGLE_SITE_VERIFICATION = "KZ3lN-bAnk9OP5bAPYDGIkqoiREwmhYvO_90TK_uVfA";
 export const POSTS_PER_PAGE = 10;
 
 export const NAV_LINKS: Array<{ label: string; href: string }> = [
