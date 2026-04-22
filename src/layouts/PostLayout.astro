@@ -1,0 +1,52 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import Disqus from "../components/Disqus.astro";
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  date: Date;
+  tags: string[];
+  category: string;
+  author: string;
+  slug: string;
+  description?: string;
+}
+
+const { title, subtitle, date, tags, category, author, slug, description } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description ?? subtitle ?? title}
+  article={{
+    publishedTime: date.toISOString(),
+    author,
+    tags,
+  }}
+>
+  <article class="post">
+    <header>
+      <h1>{title}</h1>
+      {subtitle && <p class="post-subtitle">{subtitle}</p>}
+      <p class="post-meta">
+        Posted by {author} on <FormattedDate date={date} />
+        · <span class="tag">{category}</span>
+      </p>
+      {tags.length > 0 && (
+        <p>
+          {tags.map((t) => <span class="tag">#{t}</span>)}
+        </p>
+      )}
+    </header>
+
+    <hr />
+
+    <slot />
+
+    <hr />
+
+    <Disqus identifier={slug} title={title} />
+  </article>
+</BaseLayout>

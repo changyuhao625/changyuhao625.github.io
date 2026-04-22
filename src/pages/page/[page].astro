@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { SITE_DESCRIPTION, POSTS_PER_PAGE } from "../../consts";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+  );
+  const paginated = paginate(posts, { pageSize: POSTS_PER_PAGE });
+  // Skip page 1 — that's served by /index.astro
+  return paginated.filter((p: any) => p.params.page !== "1");
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+function postUrl(id: string) {
+  return `/${id}/`;
+}
+
+function excerpt(body: string) {
+  const plain = body
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/!\[[^\]]*\]\([^\)]*\)/g, "")
+    .replace(/\[([^\]]+)\]\([^\)]*\)/g, "$1")
+    .replace(/[#>*_~\-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return plain.slice(0, 200) + (plain.length > 200 ? "…" : "");
+}
+
+const prevUrl =
+  page.currentPage === 2 ? "/" : `/page/${page.currentPage - 1}/`;
+---
+
+<BaseLayout
+  title={`Page ${page.currentPage}`}
+  description={SITE_DESCRIPTION}
+>
+  <section class="hero">
+    <h1>Page {page.currentPage} / {page.lastPage}</h1>
+  </section>
+
+  {page.data.map((post) => (
+    <article class="post-preview">
+      <a href={postUrl(post.id)}>
+        <h2 class="post-title">{post.data.title}</h2>
+        {post.data.subtitle && <h3 class="post-subtitle">{post.data.subtitle}</h3>}
+        <p class="post-excerpt">{excerpt(post.body ?? "")}</p>
+      </a>
+      <p class="post-meta">
+        Posted by {post.data.author} on <FormattedDate date={post.data.date} />
+        · <span class="tag">{post.data.category}</span>
+      </p>
+      <hr />
+    </article>
+  ))}
+
+  <ul class="pager">
+    <li class="previous">
+      {page.currentPage > 1 && <a href={prevUrl}>&larr; Newer Posts</a>}
+    </li>
+    <li class="next">
+      {page.url.next && <a href={page.url.next}>Older Posts &rarr;</a>}
+    </li>
+  </ul>
+</BaseLayout>

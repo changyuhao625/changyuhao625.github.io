@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+type Group = { year: string; posts: typeof posts };
+const groupsMap = new Map<string, Group>();
+for (const p of posts) {
+  const y = String(p.data.date.getFullYear());
+  if (!groupsMap.has(y)) groupsMap.set(y, { year: y, posts: [] as any });
+  groupsMap.get(y)!.posts.push(p);
+}
+const groups = Array.from(groupsMap.values());
+---
+
+<BaseLayout title="Archive" description="All posts, grouped by year">
+  <section class="hero">
+    <h1>Archive</h1>
+    <p>Total {posts.length} posts</p>
+  </section>
+
+  {groups.map((g) => (
+    <section>
+      <div class="archive-year">{g.year}</div>
+      {g.posts.map((p) => (
+        <div class="archive-item">
+          <a href={`/${p.id}/`}>{p.data.title}</a>
+          <FormattedDate date={p.data.date} />
+        </div>
+      ))}
+    </section>
+  ))}
+</BaseLayout>
