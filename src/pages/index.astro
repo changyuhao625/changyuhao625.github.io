@@ -4,6 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import { SITE_DESCRIPTION, POSTS_PER_PAGE, SITE_TITLE, SITE_URL } from "../consts";
 import { readingTime } from "../utils/reading-time";
+import { extractDescription } from "../utils/description";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -45,18 +46,6 @@ const jsonLd = [
   },
 ];
 
-function excerpt(body: string) {
-  const plain = body
-    .replace(/```[\s\S]*?```/g, "")
-    .replace(/`([^`]+)`/g, "$1")
-    .replace(/!\[[^\]]*\]\([^\)]*\)/g, "")
-    .replace(/\[([^\]]+)\]\([^\)]*\)/g, "$1")
-    .replace(/<!--[\s\S]*?-->/g, "")
-    .replace(/[#>*_~]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-  return plain.slice(0, 180) + (plain.length > 180 ? "…" : "");
-}
 ---
 
 <BaseLayout description={SITE_DESCRIPTION} jsonLd={jsonLd}>
@@ -72,7 +61,7 @@ function excerpt(body: string) {
         <a href={`/${post.id}/`}>
           <h2 class="post-title">{post.data.title}</h2>
           {post.data.subtitle && <h3 class="post-subtitle">{post.data.subtitle}</h3>}
-          <p class="post-excerpt">{excerpt(post.body ?? "")}</p>
+          <p class="post-excerpt">{extractDescription(post.body, { description: post.data.description, subtitle: post.data.subtitle, maxLen: 180 })}</p>
         </a>
         <p class="post-meta">
           <FormattedDate date={post.data.date} />
