@@ -1,0 +1,23 @@
+---
+---
+
+<div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+
+<script>
+  function bindProgress() {
+    const bar = document.getElementById("reading-progress");
+    if (!bar) return;
+    const onScroll = () => {
+      const h = document.documentElement;
+      const total = h.scrollHeight - h.clientHeight;
+      const scrolled = h.scrollTop || document.body.scrollTop;
+      const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+      bar.style.width = pct + "%";
+    };
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+  bindProgress();
+  document.addEventListener("astro:page-load", bindProgress);
+</script>

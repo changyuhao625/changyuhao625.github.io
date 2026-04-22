@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const tagSet = new Set<string>();
+  for (const p of posts) for (const t of p.data.tags) tagSet.add(t);
+  return Array.from(tagSet).map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((p) => p.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout
+  title={`Posts tagged "${tag}"`}
+  description={`All posts tagged with ${tag}`}
+>
+  <section class="hero">
+    <p style="margin:0;color:var(--fg-muted);font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase;">Tag</p>
+    <h1>#{tag}</h1>
+    <p>{posts.length} post{posts.length !== 1 ? "s" : ""}</p>
+  </section>
+
+  {posts.map((p) => (
+    <div class="archive-item">
+      <a href={`/${p.id}/`}>{p.data.title}</a>
+      <FormattedDate date={p.data.date} />
+    </div>
+  ))}
+
+  <p style="margin-top:var(--s-7);"><a href="/tags/">&larr; All tags</a></p>
+</BaseLayout>

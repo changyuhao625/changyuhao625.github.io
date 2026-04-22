@@ -1,7 +1,14 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
+import type { MarkdownHeading } from "astro";
+import BaseHead from "../components/BaseHead.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import ReadingProgress from "../components/ReadingProgress.astro";
+import CodeBlockEnhancer from "../components/CodeBlockEnhancer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import TableOfContents from "../components/TableOfContents.astro";
 import Disqus from "../components/Disqus.astro";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -12,41 +19,106 @@ interface Props {
   author: string;
   slug: string;
   description?: string;
+  headerImg?: string;
+  readingMinutes: number;
+  headings: MarkdownHeading[];
+  jsonLd?: Record<string, any> | Array<Record<string, any>>;
 }
 
-const { title, subtitle, date, tags, category, author, slug, description } = Astro.props;
+const {
+  title,
+  subtitle,
+  date,
+  tags,
+  category,
+  author,
+  slug,
+  description,
+  headerImg,
+  readingMinutes,
+  headings,
+  jsonLd,
+} = Astro.props;
+
+const hasImage = Boolean(headerImg);
+const heroStyle = hasImage ? `background-image: url(${headerImg});` : undefined;
 ---
 
-<BaseLayout
-  title={title}
-  description={description ?? subtitle ?? title}
-  article={{
-    publishedTime: date.toISOString(),
-    author,
-    tags,
-  }}
->
-  <article class="post">
-    <header>
-      <h1>{title}</h1>
-      {subtitle && <p class="post-subtitle">{subtitle}</p>}
-      <p class="post-meta">
-        Posted by {author} on <FormattedDate date={date} />
-        · <span class="tag">{category}</span>
-      </p>
-      {tags.length > 0 && (
-        <p>
-          {tags.map((t) => <span class="tag">#{t}</span>)}
-        </p>
-      )}
-    </header>
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <BaseHead
+      title={title}
+      description={description ?? subtitle ?? title}
+      image={headerImg}
+      keywords={tags}
+      article={{
+        publishedTime: date.toISOString(),
+        author,
+        tags,
+        section: category,
+      }}
+      jsonLd={jsonLd}
+    />
+    <ClientRouter />
+  </head>
+  <body>
+    <ReadingProgress />
+    <SiteHeader />
+    <main>
+      <header class={`post-hero${hasImage ? " has-image" : ""}`} style={heroStyle}>
+        <div class="container">
+          <h1 class="post-title">{title}</h1>
+          {subtitle && <p class="post-subtitle">{subtitle}</p>}
+          <div class="post-meta">
+            <span>{author}</span>
+            <span class="dot"></span>
+            <FormattedDate date={date} />
+            <span class="dot"></span>
+            <span>{readingMinutes} min read</span>
+            <span class="dot"></span>
+            <a href={`/tags/`} class="tag">{category}</a>
+          </div>
+        </div>
+      </header>
 
-    <hr />
+      <div class="container post-layout">
+        <article class="post">
+          <slot />
 
-    <slot />
+          {tags.length > 0 && (
+            <div class="post-tags">
+              {tags.map((t) => (
+                <a class="tag" href={`/tags/${encodeURIComponent(t)}/`}>#{t}</a>
+              ))}
+            </div>
+          )}
 
-    <hr />
+          <hr />
 
-    <Disqus identifier={slug} title={title} />
-  </article>
-</BaseLayout>
+          <Disqus identifier={slug} title={title} />
+        </article>
+
+        <TableOfContents headings={headings} />
+      </div>
+    </main>
+    <SiteFooter />
+    <CodeBlockEnhancer />
+  </body>
+</html>
+
+<style>
+  .post-layout {
+    display: grid;
+    gap: var(--s-7);
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+  @media (min-width: 1100px) {
+    .post-layout {
+      grid-template-columns: minmax(0, var(--max-width)) 220px;
+      justify-content: center;
+      max-width: calc(var(--max-width) + 220px + var(--s-7));
+    }
+  }
+</style>

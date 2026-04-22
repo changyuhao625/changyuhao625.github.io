@@ -1,21 +1,78 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { SOCIAL_LINKS, SITE_URL } from "../consts";
+
+const aboutDescription =
+  "軟體開發 10 年。從 0 到 1 打造過產品，也從無到有拉起過團隊 — 組織建立、團隊領導、產品打磨、系統規模化都經歷過。";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  mainEntity: {
+    "@type": "Person",
+    name: "Harry Chang",
+    alternateName: "changyuhao",
+    url: `${SITE_URL}/about/`,
+    image: `${SITE_URL}/img/avatar.harry.512.png`,
+    description: aboutDescription,
+    jobTitle: "Software Engineer",
+    knowsAbout: [
+      "C#",
+      ".NET",
+      "ASP.NET MVC",
+      "ASP.NET Web API",
+      ".NET Core",
+      "Clean Architecture",
+      "Unit Testing",
+      "Scrum",
+      "Agile",
+    ],
+    email: `mailto:${SOCIAL_LINKS.email}`,
+    sameAs: [
+      `https://github.com/${SOCIAL_LINKS.github}`,
+      `https://www.linkedin.com/in/${SOCIAL_LINKS.linkedin}`,
+      `https://www.facebook.com/${SOCIAL_LINKS.facebook}`,
+    ],
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      name: "Professional Scrum Master I (PSM I)",
+    },
+  },
+};
 ---
 
-<BaseLayout title="About" description="About Harry Chang">
+<BaseLayout title="About" description={aboutDescription} jsonLd={jsonLd}>
   <section class="hero">
     <h1>About</h1>
+    <p>10 年軟體開發資歷 · 從 0 到 1 打造產品與團隊 · 敏捷實踐者</p>
   </section>
 
   <article class="post">
-    <h2>關於我</h2>
-    <p>Hi! 我是 Harry，</p>
-    <p>喜歡與人互動，更喜歡追求各種新知，</p>
-    <p>擅長架構規劃與設計，</p>
-    <p>對敏捷也非常有熱情，正嘗試讓目前的團隊更敏捷!</p>
+    <div style="display:flex;align-items:center;gap:var(--s-5);margin-bottom:var(--s-6);flex-wrap:wrap;">
+      <img
+        src="/img/avatar.harry.512.png"
+        alt="Harry Chang"
+        width="120"
+        height="120"
+        style="border-radius:50%;border:3px solid var(--border);box-shadow:var(--shadow-md);"
+      />
+      <div style="flex:1;min-width:260px;">
+        <h2 style="margin:0 0 var(--s-2);">Harry Chang</h2>
+        <p style="margin:0;color:var(--fg-soft);">
+          軟體開發 10 年。從 0 到 1 打造過產品，也從無到有拉起過團隊 — 這段路走下來，
+          組織建立、團隊領導、產品打磨、系統規模化都經歷過。
+        </p>
+      </div>
+    </div>
+
+    <p>我認為敏捷不只是改變流程，而是一種能力：快速反應變化，持續創造價值。</p>
+
+    <p>Blog 是我把踩過的坑、想通的事寫下來的地方。</p>
 
     <h2>認證</h2>
-    <p><img src="/img/badge-7227.png" alt="PSM I badge" width="100" /></p>
+    <p>
+      <img src="/img/badge-7227.png" alt="PSM I badge" width="100" height="100" />
+    </p>
 
     <h2>Skills</h2>
     <ul>
@@ -25,5 +82,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <li>Clean Architecture</li>
       <li>Scrum</li>
     </ul>
+
+    <h2>Contact</h2>
+    <p>
+      <a href={`mailto:${SOCIAL_LINKS.email}`}>{SOCIAL_LINKS.email}</a> ·
+      <a href={`https://github.com/${SOCIAL_LINKS.github}`} target="_blank" rel="noopener">GitHub</a> ·
+      <a href={`https://www.linkedin.com/in/${SOCIAL_LINKS.linkedin}`} target="_blank" rel="noopener">LinkedIn</a>
+    </p>
   </article>
 </BaseLayout>

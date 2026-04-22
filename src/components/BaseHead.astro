@@ -7,23 +7,34 @@ import {
 } from "../consts";
 import "../styles/global.css";
 
+import JsonLd from "./JsonLd.astro";
+
 interface Props {
   title?: string;
   description?: string;
   image?: string;
+  keywords?: string[];
   article?: {
     publishedTime: string;
+    modifiedTime?: string;
     author?: string;
     tags?: string[];
+    section?: string;
   };
+  jsonLd?: Record<string, any> | Array<Record<string, any>>;
 }
 
 const {
   title,
   description = SITE_DESCRIPTION,
   image = "/img/avatar.harry.512.png",
+  keywords,
   article,
+  jsonLd,
 } = Astro.props;
+
+const keywordsStr =
+  keywords && keywords.length ? keywords.join(", ") : SITE_KEYWORDS;
 
 const fullTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -37,8 +48,10 @@ const ogImage = new URL(image, Astro.site).toString();
 
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
-<meta name="keywords" content={SITE_KEYWORDS} />
-<meta name="theme-color" content="#000000" />
+<meta name="keywords" content={keywordsStr} />
+<meta name="author" content="Harry Chang" />
+<meta name="theme-color" content="#fdfaf6" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#14110d" media="(prefers-color-scheme: dark)" />
 <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
 
 <link rel="canonical" href={canonicalURL} />
@@ -46,6 +59,28 @@ const ogImage = new URL(image, Astro.site).toString();
 <link rel="manifest" href="/pwa/manifest.json" />
 <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
 <link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- Fonts: Inter (Latin), Noto Sans TC (CJK), JetBrains Mono (code) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+/>
+
+<!-- Theme init (must run before paint to avoid flash) -->
+<script is:inline>
+  (function () {
+    try {
+      const stored = localStorage.getItem("theme");
+      const system = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+      const theme = stored || system;
+      document.documentElement.setAttribute("data-theme", theme);
+    } catch (e) {}
+  })();
+</script>
 
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
@@ -56,13 +91,19 @@ const ogImage = new URL(image, Astro.site).toString();
 {article?.publishedTime && (
   <meta property="article:published_time" content={article.publishedTime} />
 )}
+{article?.modifiedTime && (
+  <meta property="article:modified_time" content={article.modifiedTime} />
+)}
 {article?.author && <meta property="article:author" content={article.author} />}
+{article?.section && <meta property="article:section" content={article.section} />}
 {article?.tags?.map((t) => <meta property="article:tag" content={t} />)}
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
+
+{jsonLd && <JsonLd data={jsonLd} />}
 
 {GA_MEASUREMENT_ID && (
   <>

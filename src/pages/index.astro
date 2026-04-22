@@ -2,19 +2,48 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FormattedDate from "../components/FormattedDate.astro";
-import { SITE_DESCRIPTION, POSTS_PER_PAGE } from "../consts";
+import { SITE_DESCRIPTION, POSTS_PER_PAGE, SITE_TITLE, SITE_URL } from "../consts";
+import { readingTime } from "../utils/reading-time";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
-const pageSize = POSTS_PER_PAGE;
-const first = posts.slice(0, pageSize);
-const totalPages = Math.ceil(posts.length / pageSize);
+const first = posts.slice(0, POSTS_PER_PAGE);
+const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
 
-function postUrl(id: string) {
-  return `/${id}/`;
-}
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_TITLE,
+    url: `${SITE_URL}/`,
+    description: SITE_DESCRIPTION,
+    inLanguage: "zh-Hant",
+    author: { "@type": "Person", name: "Harry Chang", url: `${SITE_URL}/about/` },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_URL}/tags/{search_term_string}/`,
+      "query-input": "required name=search_term_string",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: SITE_TITLE,
+    url: `${SITE_URL}/`,
+    description: SITE_DESCRIPTION,
+    inLanguage: "zh-Hant",
+    author: { "@type": "Person", name: "Harry Chang", url: `${SITE_URL}/about/` },
+    blogPost: posts.slice(0, 10).map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.data.title,
+      url: `${SITE_URL}/${p.id}/`,
+      datePublished: p.data.date.toISOString(),
+      keywords: p.data.tags.join(", "),
+    })),
+  },
+];
 
 function excerpt(body: string) {
   const plain = body
@@ -22,33 +51,39 @@ function excerpt(body: string) {
     .replace(/`([^`]+)`/g, "$1")
     .replace(/!\[[^\]]*\]\([^\)]*\)/g, "")
     .replace(/\[([^\]]+)\]\([^\)]*\)/g, "$1")
-    .replace(/[#>*_~\-]+/g, " ")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/[#>*_~]+/g, " ")
     .replace(/\s+/g, " ")
     .trim();
-  return plain.slice(0, 200) + (plain.length > 200 ? "…" : "");
+  return plain.slice(0, 180) + (plain.length > 180 ? "…" : "");
 }
 ---
 
-<BaseLayout description={SITE_DESCRIPTION}>
+<BaseLayout description={SITE_DESCRIPTION} jsonLd={jsonLd}>
   <section class="hero">
-    <h1>Harry Chang's Blog</h1>
+    <h1>Harry Chang</h1>
     <p>{SITE_DESCRIPTION}</p>
   </section>
 
-  {first.map((post) => (
-    <article class="post-preview">
-      <a href={postUrl(post.id)}>
-        <h2 class="post-title">{post.data.title}</h2>
-        {post.data.subtitle && <h3 class="post-subtitle">{post.data.subtitle}</h3>}
-        <p class="post-excerpt">{excerpt(post.body ?? "")}</p>
-      </a>
-      <p class="post-meta">
-        Posted by {post.data.author} on <FormattedDate date={post.data.date} />
-        · <span class="tag">{post.data.category}</span>
-      </p>
-      <hr />
-    </article>
-  ))}
+  {first.map((post) => {
+    const { minutes } = readingTime(post.body ?? "");
+    return (
+      <article class="post-preview">
+        <a href={`/${post.id}/`}>
+          <h2 class="post-title">{post.data.title}</h2>
+          {post.data.subtitle && <h3 class="post-subtitle">{post.data.subtitle}</h3>}
+          <p class="post-excerpt">{excerpt(post.body ?? "")}</p>
+        </a>
+        <p class="post-meta">
+          <FormattedDate date={post.data.date} />
+          <span class="dot"></span>
+          <span>{minutes} min read</span>
+          <span class="dot"></span>
+          <span class="tag">{post.data.category}</span>
+        </p>
+      </article>
+    );
+  })}
 
   {totalPages > 1 && (
     <ul class="pager">
